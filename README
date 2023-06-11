@@ -1,0 +1,20 @@
+Works cited:
+
+Linux system calls and parameters:
+https://chromium.googlesource.com/chromiumos/docs/+/HEAD/constants/syscalls.md#arm64-64_bit
+
+Arm Architecture Documentation:
+https://developer.arm.com/documentation/ddi0487/latest/
+
+/usr/include/elf.h
+
+man elf
+
+Programs:
+    gcc
+    gdb
+    readelf
+    objdump
+    xxd
+    strace
+
