@@ -1,0 +1,36 @@
+# 3322 2222 2222 1111 1111 11
+# 1098 7654 3210 9876 5432 1098 7654 3210
+# ---------------------------------------
+# f101 0010 1hhi iiii iiii iiii iiid dddd   MOVZ f={0->32bit arch, 1->64bit arch}, h=leftshift{hh*16}, i=16bit unsigned, d=destination register (not SP)
+#
+#
+# 1101 0100 000i iiii iiii iiii iii0 0001   SVC i=
+#
+#
+# 0011 1000 000i iiii iiii 00nn nnnt tttt   STURB
+#
+#
+# f001 0001 0hii iiii iiii iinn nnnd dddd   ADD
+#
+#
+# f101 0001 0hii iiii iiii iinn nnnd dddd   SUB
+#
+#
+# f011 0001 0hii iiii iiii iinn nnnd dddd   ADDS (do not use with SP)
+#
+#
+# f111 0001 0hii iiii iiii iinn nnnd dddd   SUBS (do not use with SP)
+#
+#
+# 1ll1 0000 iiii iiii iiii iiii iiid dddd   ADRP
+#
+#
+# 1101 0101 0000 0011 0010 0000 0001 1111   NOP
+#    d   5     0    3    2    0    1    f
+#
+#
+# Make the first instruction a nop
+#
+000000e8: 1f20 03d5
+
+

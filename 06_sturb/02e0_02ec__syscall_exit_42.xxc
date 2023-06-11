@@ -1,0 +1,23 @@
+# 3322 2222 2222 1111 1111 11
+# 1098 7654 3210 9876 5432 1098 7654 3210
+# ---------------------------------------
+# f101 0010 1hhi iiii iiii iiii iiid dddd    MOVZ f={0->32bit arch, 1->64bit arch}, h=leftshift{hh*16}, i=16bit unsigned, d=destination register (not SP)
+# 1101 0100 000i iiii iiii iiii iii0 0001     SVC i=
+# 0011 1000 000i iiii iiii 00nn nnnt tttt   STURB
+# f001 0001 0hii iiii iiii iinn nnnd dddd     ADD
+# f101 0001 0hii iiii iiii iinn nnnd dddd     SUB
+# f011 0001 0hii iiii iiii iinn nnnd dddd    ADDS (do not use with SP)
+# f111 0001 0hii iiii iiii iinn nnnd dddd    SUBS (do not use with SP)
+# 1ll1 0000 iiii iiii iiii iiii iiid dddd    ADRP
+#
+#
+# Exit the program with return code 42
+#
+# Put return value #42 (aka 0x2a) into register 0       MOVZ sf=1 hw=0 imm16=0x2a Rd=0
+000002e0: 4005 80d2
+# Put exit syscall id #93 (aka 0x5d) into register 8    MOVZ sf=1 hw=0 imm16=0x5d Rd=8
+000002e4: a80b 80d2
+#Poke the OS                                            SVC imm16=0
+000002e8: 0100 00d4
+
+

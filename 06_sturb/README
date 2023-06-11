@@ -1,0 +1,31 @@
+New workflow:  binary patching.
+
+Rather than work with a full xxd dump, create a series
+of files that represent indivdiual patches to an existing
+binary.  The naming convention for the file lists the
+address affected and what that file does, e.g.,
+
+    010c_010f__X29_to_stack_0x0_offset.xxc
+
+The contents of that file look like
+
+    # 3322 2222 2222 1111 1111 11
+    # 1098 7654 3210 9876 5432 1098 7654 3210
+    # ---------------------------------------
+    # 0011 1000 000i iiii iiii 00nn nnnt tttt   STURB
+    #              0 0000 0000   11 1111 1101
+    #    3    8    0    0    0    3    f    d
+    #
+    # Store the contents of X29 on the stack
+    #
+    0000010c: fd03 0038
+
+The make.me script strips out the comments and patches
+the sturb binary.
+
+The xxc.template file lists the binary patterns for
+several common instructions.  The reader is expected
+to be familar with what each field does.  Creating a
+new patch should be as simple as copying the xxc.template
+file and deleting everything you don't need.
+

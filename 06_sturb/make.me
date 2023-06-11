@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Note:  this assumes all xxc patches are 4 bytes wide
+
+cp nop sturb
+for i in *.xxc
+do
+    sed "/^#/d" ${i} > temp.xxd
+    xxd -c4 -r temp.xxd sturb
+done
+objdump --disassemble sturb > sturb.objdump 2>&1
+chmod 700 sturb
+rm -f temp.xxd
+
+
