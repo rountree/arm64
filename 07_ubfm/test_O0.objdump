@@ -1,0 +1,66 @@
+
+test_O0.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
+   4:	910003fd 	mov	x29, sp
+   8:	d29159c0 	mov	x0, #0x8ace                	// #35534
+   c:	f2a048c0 	movk	x0, #0x246, lsl #16
+  10:	f2df75a0 	movk	x0, #0xfbad, lsl #32
+  14:	f2fbd940 	movk	x0, #0xdeca, lsl #48
+  18:	f9001be0 	str	x0, [sp, #48]
+  1c:	52800600 	mov	w0, #0x30                  	// #48
+  20:	390063e0 	strb	w0, [sp, #24]
+  24:	52800f00 	mov	w0, #0x78                  	// #120
+  28:	390067e0 	strb	w0, [sp, #25]
+  2c:	3900afff 	strb	wzr, [sp, #43]
+  30:	52800140 	mov	w0, #0xa                   	// #10
+  34:	3900abe0 	strb	w0, [sp, #42]
+  38:	52800220 	mov	w0, #0x11                  	// #17
+  3c:	b9003fe0 	str	w0, [sp, #60]
+  40:	14000020 	b	c0 <main+0xc0>
+  44:	f9401be0 	ldr	x0, [sp, #48]
+  48:	12001c00 	and	w0, w0, #0xff
+  4c:	12000c00 	and	w0, w0, #0xf
+  50:	12001c00 	and	w0, w0, #0xff
+  54:	39005fe0 	strb	w0, [sp, #23]
+  58:	f9401be0 	ldr	x0, [sp, #48]
+  5c:	d344fc00 	lsr	x0, x0, #4
+  60:	f9001be0 	str	x0, [sp, #48]
+  64:	39405fe0 	ldrb	w0, [sp, #23]
+  68:	12001c00 	and	w0, w0, #0xff
+  6c:	7100241f 	cmp	w0, #0x9
+  70:	540000e9 	b.ls	8c <main+0x8c>  // b.plast
+  74:	39405fe0 	ldrb	w0, [sp, #23]
+  78:	12001c00 	and	w0, w0, #0xff
+  7c:	11015c00 	add	w0, w0, #0x57
+  80:	12001c00 	and	w0, w0, #0xff
+  84:	39005fe0 	strb	w0, [sp, #23]
+  88:	14000006 	b	a0 <main+0xa0>
+  8c:	39405fe0 	ldrb	w0, [sp, #23]
+  90:	12001c00 	and	w0, w0, #0xff
+  94:	1100c000 	add	w0, w0, #0x30
+  98:	12001c00 	and	w0, w0, #0xff
+  9c:	39005fe0 	strb	w0, [sp, #23]
+  a0:	39405fe0 	ldrb	w0, [sp, #23]
+  a4:	12001c02 	and	w2, w0, #0xff
+  a8:	b9803fe0 	ldrsw	x0, [sp, #60]
+  ac:	910063e1 	add	x1, sp, #0x18
+  b0:	38206822 	strb	w2, [x1, x0]
+  b4:	b9403fe0 	ldr	w0, [sp, #60]
+  b8:	51000400 	sub	w0, w0, #0x1
+  bc:	b9003fe0 	str	w0, [sp, #60]
+  c0:	b9403fe0 	ldr	w0, [sp, #60]
+  c4:	7100041f 	cmp	w0, #0x1
+  c8:	54fffbec 	b.gt	44 <main+0x44>
+  cc:	910063e0 	add	x0, sp, #0x18
+  d0:	d2800282 	mov	x2, #0x14                  	// #20
+  d4:	aa0003e1 	mov	x1, x0
+  d8:	52800020 	mov	w0, #0x1                   	// #1
+  dc:	94000000 	bl	0 <write>
+  e0:	52800000 	mov	w0, #0x0                   	// #0
+  e4:	a8c47bfd 	ldp	x29, x30, [sp], #64
+  e8:	d65f03c0 	ret
