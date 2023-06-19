@@ -10,6 +10,7 @@ xxc2bin: Makefile target.xxc
 	objdump --disassemble target > target.objdump 2>&1	# Nice sanity check
 	readelf --all --wide target > target.readelf 2>&1	# readelf output
 	chmod 700 target									# Makes binary executable
+	ls -l ./target*
 
 clean:
 	rm target.xxd target target.objump target.readelf target 
