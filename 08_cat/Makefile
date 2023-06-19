@@ -13,5 +13,5 @@ xxc2bin: Makefile target.xxc
 	ls -l ./target*
 
 clean:
-	rm target.xxd target target.objump target.readelf target 
+	rm -f nop target.xxd target target.objdump target.readelf target
 
