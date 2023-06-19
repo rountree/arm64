@@ -56,18 +56,41 @@
 000000dc: 0000 0000  ....
 000000e0: 1000 0000  ....
 000000e4: 0000 0000  ....
-000000e8: 1f20 03d5  . ..
+000000e8: 1f20 03d5  . ..   # Keep a few nops here just for luck
 000000ec: 1f20 03d5  . ..
 000000f0: 1f20 03d5  . ..
 000000f4: 1f20 03d5  . ..
 000000f8: 1f20 03d5  . ..
 000000fc: 1f20 03d5  . ..
-00000100: 1f20 03d5  . ..
-00000104: 1f20 03d5  . ..
+#                           Move 8 bytes at stack pointer into x0
+#                           LDR (immediate) Post-index
+#                           1111 1000 010i iiii iiii 01nn nnnt tttt LDR (immediate)
+#                                        0 0000 0000   11 1110 0000
+#                              f    8    4    0    0    7    e    0
+00000100: e007 40f8
+#                           Compare register x0 to #2
+#                           s111 0001 0hii iiii iiii iinn nnn1 1111
+#                           1          000 0000 0000 1000 000
+#                              f    1    0    0    0    8    1    f
+00000104: 1f08 00f1
 00000108: 1f20 03d5  . ..
-0000010c: 1f20 03d5  . ..
-00000110: 1f20 03d5  . ..
-00000114: 1f20 03d5  . ..
+#                           Setup exit syscall x8 <- 0x5d
+#                           MOVZ
+#                           s101 0010 1hhi iiii iiii iiii iiid dddd
+#                           1          00          0 1011 1010 1000
+#                              d    2    8    0    0    b    a    8
+0000010c: a80b 80d2
+#                           Setup exit return code x0 <- 1
+#                           MOVZ
+#                           s101 0010 1hhi iiii iiii iiii iiid dddd
+#                           1          000 0000 0000 0000 0010 0000
+#                              d    2    8    0    0    0    2    0
+00000110: 2000 80d2
+#                           exit(1) expected 2 command line parameters (binary + filename), got something else.
+#                           SVC
+#                           1101 0100 0000 0000 0000 0000 0000 0001
+#                              d    4    0    0    0    0    0    1
+00000114: 0100 00d4
 00000118: 1f20 03d5  . ..
 0000011c: 1f20 03d5  . ..
 00000120: 1f20 03d5  . ..
